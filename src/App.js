@@ -1,9 +1,19 @@
 import React from "react";
+import Body from "./pages/Body";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Browse from "./pages/Browse";
 
 const App = () => {
+  const router = createBrowserRouter([
+    { path: "/", element: <Body /> },
+    {
+      path: "/browse",
+      element: <Browse />,
+    },
+  ]);
   return (
     <div>
-      <h1 className="bg-red-600">Hello, World</h1>
+      <RouterProvider router={router} />
     </div>
   );
 };

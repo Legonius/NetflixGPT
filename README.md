@@ -9,6 +9,7 @@
 
 - Home Screen
 - Header
+  - Logo
 - Sign in/up
   - Sign in/up form
   - Redirect to Browse app
