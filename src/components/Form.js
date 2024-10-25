@@ -89,7 +89,12 @@ const Form = () => {
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
         password
       );
-    if (!isPasswordValid) return "Password is not Strong";
+    if (!isPasswordValid) {
+      if (signup) {
+        return "Password is not Strong";
+      }
+      return "Password is incorrect";
+    }
 
     return null;
   };

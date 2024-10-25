@@ -7,7 +7,6 @@ const Browse = () => {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
   useEffect(() => {
-    console.log(user);
     if (!user.email) {
       navigate("/");
     }

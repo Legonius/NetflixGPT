@@ -1,20 +1,18 @@
 import React, { useEffect } from "react";
-import Header from "../components/Header";
 import Form from "../components/Form";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { addUser, removeUser } from "../slices/userSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { NETFLIX_LOGO } from "../utils/constants";
 
 const Body = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log(auth);
-
         const uid = user.uid;
         const displayName = user.displayName;
         const email = user.email;
@@ -22,10 +20,14 @@ const Body = () => {
         dispatch(addUser({ uid, displayName, email }));
         navigate("/browse");
       } else {
+        console.log("out going");
         dispatch(removeUser());
         navigate("/");
       }
     });
+
+    // Cleanup: unsubscribe when component unmounts
+    // return () => unsubscribe(); // I'm not clean up bcos this component will be unmout after login
   }, []);
   return (
     <div className="relative w-screen">
@@ -35,7 +37,9 @@ const Body = () => {
         alt="bacground-image"
       />
       <div className="h-screen w-full flex flex-col bg-black/50 px-20">
-        <Header />
+        <div className="z-10 w-full ">
+          <img className="h-24" src={NETFLIX_LOGO} alt="logo" />
+        </div>
         <Form />
       </div>
     </div>

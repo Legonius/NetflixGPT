@@ -42,3 +42,5 @@
 - Created Redux Store with userSlice
 - Implemented Sign out
 - Update Prfofile
+- use onAuthStateChanged to sign in/out dispatching only in one place
+- Add hardcoded values to the constants file

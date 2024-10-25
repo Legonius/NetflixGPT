@@ -6,27 +6,28 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useSelector } from "react-redux";
+import { NETFLIX_LOGO } from "../utils/constants";
 
 const Navbar = () => {
   const [dropDown, setDropDown] = useState(false);
   const user = useSelector((state) => state.user);
 
   const handleSignOutBtn = () => {
-    const sO = signOut(auth)
-      .then(() => {})
-      .catch((error) => {
-        console.log(error);
-      });
-    console.log(sO);
+    if (user.email) {
+      const sO = signOut(auth)
+        .then(() => {
+          //can do logic if needed
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      console.log(sO);
+    }
   };
   return (
     <nav className="h-16 flex justify-between items-center bg-gradient-to-b from-black text-white px-8 select-none">
       <div className="flex gap-6 h-full">
-        <img
-          className="h-full"
-          src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
-          alt="logo"
-        />
+        <img className="h-full" src={NETFLIX_LOGO} alt="logo" />
         <ul className="h-full flex items-center gap-6">
           <li>
             <NavLink to={"/browse"}>Home</NavLink>
