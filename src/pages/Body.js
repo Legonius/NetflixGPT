@@ -1,8 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../components/Header";
 import Form from "../components/Form";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { addUser, removeUser } from "../slices/userSlice";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Body = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log(auth);
+
+        const uid = user.uid;
+        const displayName = user.displayName;
+        const email = user.email;
+
+        dispatch(addUser({ uid, displayName, email }));
+        navigate("/browse");
+      } else {
+        dispatch(removeUser());
+        navigate("/");
+      }
+    });
+  }, []);
   return (
     <div className="relative w-screen">
       <img

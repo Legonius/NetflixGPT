@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Navbar from "../components/Navbar";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Browse = () => {
-  return <div></div>;
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.user);
+  useEffect(() => {
+    console.log(user);
+    if (!user.email) {
+      navigate("/");
+    }
+  }, [user]);
+  return (
+    <div className="bg-gray-500 min-h-screen w-screen">
+      <Navbar />
+    </div>
+  );
 };
 
 export default Browse;

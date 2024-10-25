@@ -24,3 +24,21 @@
     - Name & Description
     - Movies suggestions
   - Scrollable Row of each Genre Movies suggestions
+
+# Complete
+
+- Create React Ap
+- Configured TailwindCss
+- Header
+- Routing of App
+- Login Form
+- Sign up Form
+- Form Validation
+- useRef Hook
+- FireBase Setup
+- Deploying our app to production
+- Create Signup user account
+- Implement Sign in user Api
+- Created Redux Store with userSlice
+- Implemented Sign out
+- Update Prfofile

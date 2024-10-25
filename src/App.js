@@ -2,6 +2,8 @@ import React from "react";
 import Body from "./pages/Body";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Browse from "./pages/Browse";
+import { Provider } from "react-redux";
+import store from "./store";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -11,10 +13,11 @@ const App = () => {
       element: <Browse />,
     },
   ]);
+
   return (
-    <div>
+    <Provider store={store}>
       <RouterProvider router={router} />
-    </div>
+    </Provider>
   );
 };
 
