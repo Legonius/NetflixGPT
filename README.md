@@ -4,6 +4,10 @@
 
 - Create React App
 - Tailwind Css
+- React-router-dom
+- React-redux
+- Redux-Toolkit
+- Firebase
 
 # Features
 
