@@ -25,7 +25,7 @@ const Navbar = () => {
     }
   };
   return (
-    <nav className="h-16 flex justify-between items-center bg-gradient-to-b from-black text-white px-8 select-none">
+    <nav className="h-16 w-screen flex justify-between items-center bg-gradient-to-b from-black text-white px-8 select-none fixed z-10">
       <div className="flex gap-6 h-full">
         <img className="h-full" src={NETFLIX_LOGO} alt="logo" />
         <ul className="h-full flex items-center gap-6">
@@ -65,7 +65,7 @@ const Navbar = () => {
           />
         </div>
         {dropDown && (
-          <ul className="text-base absolute bottom-[-5rem] right-0 bg-black border-[1px] p-2 min-w-full">
+          <ul className="text-base absolute bottom-[-3rem] right-0 bg-black border-[1px] p-2 min-w-full">
             <li className="w-full cursor-pointer p-1 hover:bg-gray-700 ">
               {user.displayName}
             </li>

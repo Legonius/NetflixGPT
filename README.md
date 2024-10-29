@@ -44,3 +44,8 @@
 - Update Prfofile
 - use onAuthStateChanged to sign in/out dispatching only in one place
 - Add hardcoded values to the constants file
+- get API Key from TMDB
+- fetch Now Playing List from TMDB and add to redux store
+- fetch Main video by id to get key of youtube and store in redux
+- Make Hero Section component and autoplay video in background
+- make Title and description overlap vedio background
