@@ -19,21 +19,25 @@ const Browse = () => {
   }, [user]);
 
   const getData = async () => {
-    const fetching = await fetch(TMDB_URL, options);
-    const data = await fetching.json();
-    if (data.results) {
-      dispatch(addNowPlayingMovies(data.results));
-      if (data.results[0]) {
-        const fetchData = await fetch(
-          `https://api.themoviedb.org/3/movie/${data.results[0].id}/videos?language=en-US`,
-          options
-        );
-        const videoData = await fetchData.json();
-        const filteredForTrailer = videoData.results.filter(
-          (vd) => vd.type === "Trailer"
-        );
-        dispatch(addHeroVideo(filteredForTrailer));
+    try {
+      const fetching = await fetch(TMDB_URL, options);
+      const data = await fetching.json();
+      if (data.results) {
+        dispatch(addNowPlayingMovies(data.results));
+        if (data.results[0]) {
+          const fetchData = await fetch(
+            `https://api.themoviedb.org/3/movie/${data.results[0].id}/videos?language=en-US`,
+            options
+          );
+          const videoData = await fetchData.json();
+          const filteredForTrailer = videoData.results.filter(
+            (vd) => vd.type === "Trailer"
+          );
+          dispatch(addHeroVideo(filteredForTrailer));
+        }
       }
+    } catch (error) {
+      console.log(error);
     }
   };
   useEffect(() => {
