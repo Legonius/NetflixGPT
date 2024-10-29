@@ -17,10 +17,6 @@ const options = {
     Authorization: `Bearer ${process.env.TMDB_READ_ACCESS_TOKEN}`,
   },
 };
+const IMAGE_CDN = "https://image.tmdb.org/t/p/w500/";
 
-const getUrlForIdSearch = (id) => {
-  const url = VIDEO_ID + id + "/videos?language=en-US";
-  return url;
-};
-
-export { NETFLIX_LOGO, TMDB_URL, options, getUrlForIdSearch };
+export { NETFLIX_LOGO, TMDB_URL, options, IMAGE_CDN };

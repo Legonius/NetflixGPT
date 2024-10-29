@@ -49,3 +49,4 @@
 - fetch Main video by id to get key of youtube and store in redux
 - Make Hero Section component and autoplay video in background
 - make Title and description overlap vedio background
+- adding Now Playing,Popular & top rated suggestion Scroll

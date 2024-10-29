@@ -16,7 +16,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.hiding-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.hiding-scroll::-webkit-scrollbar {
+  display: none;
+}
 .text-shadow {
   text-shadow: 2px 2px 5px black;
 }

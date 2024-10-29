@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import HeroSection from "../components/HeroSection";
 import { options, TMDB_URL } from "../utils/constants";
 import { addHeroVideo, addNowPlayingMovies } from "../slices/movieSlice";
+import CardsBox from "../components/CardsBox";
 
 const Browse = () => {
   const navigate = useNavigate();
@@ -47,9 +48,12 @@ const Browse = () => {
   }, []);
 
   return (
-    <div className="bg-gray-500 min-h-screen w-screen relative">
+    <div className="bg-black min-h-screen w-screen relative overflow-hidden">
       <Navbar />
-      {movieList && <HeroSection movie={movieList[0]} />}
+      <div>{movieList && <HeroSection movie={movieList[0]} />}</div>
+      <div className="-mt-32 relative z-50">
+        {movieList && <CardsBox nowPlayingList={movieList} />}
+      </div>
     </div>
   );
 };
