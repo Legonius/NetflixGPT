@@ -5,7 +5,7 @@ import { auth } from "../utils/firebase";
 import { addUser, removeUser } from "../slices/userSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { NETFLIX_LOGO } from "../utils/constants";
+import { backgroundImage, NETFLIX_LOGO } from "../utils/constants";
 
 const Body = () => {
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ const Body = () => {
     <div className="relative w-screen">
       <img
         className="h-full w-full absolute top-0 left-0 z-[-10]"
-        src="https://assets.nflxext.com/ffe/siteui/vlv3/74d734ca-0eab-4cd9-871f-bca01823d872/web/MM-en-20241021-TRIFECTA-perspective_501f7616-5f20-4d49-b4e6-ef7dcfcc2cf4_large.jpg"
+        src={backgroundImage}
         alt="bacground-image"
       />
       <div className="h-screen w-full flex flex-col bg-black/50 px-20">

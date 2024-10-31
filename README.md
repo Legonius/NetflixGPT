@@ -51,3 +51,5 @@
 - make Title and description overlap vedio background
 - adding Now Playing,Popular & top rated suggestion Scroll
 - setup language selector
+- gptsearch button added in navbar
+- search page link created

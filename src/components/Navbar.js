@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
 import { HiOutlineBell } from "react-icons/hi";
 import { IoMdArrowDropdown } from "react-icons/io";
@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { NETFLIX_LOGO } from "../utils/constants";
 import identifier from "../utils/language";
 import LangSelect from "./LangSelect";
+import GPTsearch from "./GPTsearch";
 
 const Navbar = () => {
   const [dropDown, setDropDown] = useState(false);
@@ -30,10 +31,12 @@ const Navbar = () => {
   return (
     <nav className="h-16 w-screen flex justify-between items-center bg-gradient-to-b from-black text-white px-8 select-none fixed z-10">
       <div className="flex gap-6 h-full">
-        <img className="h-full" src={NETFLIX_LOGO} alt="logo" />
+        <Link to={"/"}>
+          <img className="h-full" src={NETFLIX_LOGO} alt="logo" />
+        </Link>
         <ul className="h-full flex items-center gap-6">
           <li>
-            <NavLink to={"/browse"}></NavLink>
+            <NavLink to={"/browse"}>{identifier[lang].home}</NavLink>
           </li>
           <li>
             <NavLink to={"/browse"}>{identifier[lang].tvShows}</NavLink>
@@ -55,6 +58,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="flex items-center gap-3 text-2xl h-full relative">
+        <GPTsearch />
         <IoSearch />
         <HiOutlineBell />
 
@@ -65,12 +69,14 @@ const Navbar = () => {
             alt="logo"
           />
           <IoMdArrowDropdown
-            className="cursor-pointer"
+            className={`cursor-pointer ${
+              dropDown ? "rotate-90" : ""
+            } transition-all`}
             onClick={() => setDropDown(!dropDown)}
           />
         </div>
         {dropDown && (
-          <ul className="text-base absolute bottom-[-3rem] right-0 bg-black border-[1px] p-2 min-w-full">
+          <ul className="text-base absolute bottom-[-5rem] right-0 bg-black border-[1px] p-2 min-w-fit">
             <li className="w-full cursor-pointer p-1 hover:bg-gray-700 ">
               {user.displayName}
             </li>
