@@ -7,10 +7,13 @@ import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useSelector } from "react-redux";
 import { NETFLIX_LOGO } from "../utils/constants";
+import identifier from "../utils/language";
+import LangSelect from "./LangSelect";
 
 const Navbar = () => {
   const [dropDown, setDropDown] = useState(false);
   const user = useSelector((state) => state.user);
+  const lang = useSelector((state) => state.lang.language);
 
   const handleSignOutBtn = () => {
     if (user.email) {
@@ -30,22 +33,24 @@ const Navbar = () => {
         <img className="h-full" src={NETFLIX_LOGO} alt="logo" />
         <ul className="h-full flex items-center gap-6">
           <li>
-            <NavLink to={"/browse"}>Home</NavLink>
+            <NavLink to={"/browse"}></NavLink>
           </li>
           <li>
-            <NavLink to={"/browse"}>TV Shows</NavLink>
+            <NavLink to={"/browse"}>{identifier[lang].tvShows}</NavLink>
           </li>
           <li>
-            <NavLink to={"/browse"}>Movies</NavLink>
+            <NavLink to={"/browse"}>{identifier[lang].movies}</NavLink>
           </li>
           <li>
-            <NavLink to={"/browse"}>Latest</NavLink>
+            <NavLink to={"/browse"}>{identifier[lang].latest}</NavLink>
           </li>
           <li>
-            <NavLink to={"/browse"}>My List</NavLink>
+            <NavLink to={"/browse"}>{identifier[lang].myList}</NavLink>
           </li>
           <li>
-            <NavLink to={"/browse"}>Browse by Languuages</NavLink>
+            <NavLink to={"/browse"}>
+              {identifier[lang].browseByLanguage}
+            </NavLink>
           </li>
         </ul>
       </div>
@@ -77,6 +82,7 @@ const Navbar = () => {
             </li>
           </ul>
         )}
+        <LangSelect />
       </div>
     </nav>
   );

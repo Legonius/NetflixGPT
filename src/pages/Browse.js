@@ -25,17 +25,7 @@ const Browse = () => {
       const data = await fetching.json();
       if (data.results) {
         dispatch(addNowPlayingMovies(data.results));
-        if (data.results[0]) {
-          const fetchData = await fetch(
-            `https://api.themoviedb.org/3/movie/${data.results[0].id}/videos?language=en-US`,
-            options
-          );
-          const videoData = await fetchData.json();
-          const filteredForTrailer = videoData.results.filter(
-            (vd) => vd.type === "Trailer"
-          );
-          dispatch(addHeroVideo(filteredForTrailer));
-        }
+        dispatch(addHeroVideo(data.results[0]));
       }
     } catch (error) {
       console.log(error);
@@ -50,7 +40,7 @@ const Browse = () => {
   return (
     <div className="bg-black min-h-screen w-screen relative overflow-hidden">
       <Navbar />
-      <div>{movieList && <HeroSection movie={movieList[0]} />}</div>
+      <div>{movieList && <HeroSection movie={movieList[1]} />}</div>
       <div className="-mt-32 relative z-50">
         {movieList && <CardsBox nowPlayingList={movieList} />}
       </div>

@@ -13,7 +13,6 @@ const VIDEO_ID = "https://api.themoviedb.org/3/movie/";
 const options = {
   method: "GET",
   headers: {
-    accept: "application/json",
     Authorization: `Bearer ${process.env.TMDB_READ_ACCESS_TOKEN}`,
   },
 };
